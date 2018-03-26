@@ -1,0 +1,12 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT wishlist.wsgi
+
+runtime_config:
+  python_version: 3
+
+env_variables:
+  WISHLIST_DB_PW: your-password-here
+
+beta_settings:
+  cloud_sql_instances: strong-province-113523:us-central1:travel-wishlist-db
