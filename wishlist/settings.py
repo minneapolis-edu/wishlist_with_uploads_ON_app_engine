@@ -23,13 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3*5+g(sb+0dq*4m_cf@oedqyf$-$3%qcmtwu+6t=hkg#=r4+7p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Set to false if running on GAE 
+# Set to false if running on GAE
 if os.getenv('GAE_INSTANCE'):
     DEBUG = False
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/admin'
 
@@ -135,6 +135,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'www', 'static')
 # Where in the file system to save user-uploaded files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# When deployed
 if os.getenv('GAE_INSTANCE'):
 
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
@@ -145,7 +146,6 @@ if os.getenv('GAE_INSTANCE'):
 
 # for running locally
 else:
-
     # for the site's static files, e.g. CSS, JS
     STATIC_URL = '/static/'
 
